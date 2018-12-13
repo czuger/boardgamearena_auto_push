@@ -1,13 +1,17 @@
 require 'pathname'
+require 'yaml'
 
 class Watcher
 
-  def initialize(path_to_monitor, sftp_site, sftp_path, exclusion_list = [])
-    @path_to_monitor = path_to_monitor
-    @exclusion_list = exclusion_list
+  def initialize
 
-    @sftp_site = sftp_site
-    @sftp_path = sftp_path
+    cnf = YAML::load_file('config.yml')
+
+    @path_to_monitor = cnf[:path_to_monitor]
+    @exclusion_list = cnf[:exclusion_list]
+
+    @sftp_site = cnf[:sftp_site]
+    @sftp_path = cnf[:sftp_path]
 
     @last_modification_time = {}
   end
@@ -55,4 +59,4 @@ class Watcher
 
 end
 
-Watcher.new( '/Users/ced/Boardgamearena/the-wizard-war', 'bga', 'guerremagiciens', %w( work idea )).do
+Watcher.new.do
