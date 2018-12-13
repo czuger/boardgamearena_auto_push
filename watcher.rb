@@ -55,4 +55,4 @@ class Watcher
 
 end
 
-Watcher.new( '~/boardgamearena/guerremagiciens', 'bga', 'guerremagiciens', %w( work idea )).do
+Watcher.new( '/Users/ced/Boardgamearena/the-wizard-war', 'bga', 'guerremagiciens', %w( work idea )).do
